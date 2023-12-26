@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2> IF 判斷式練習</h2>
+    <div th:if="${ isAdmin }" style="background: burlywood; width: 300px; height: 100px">
+        如果是管理者,就可以看到這個區塊 ->model isAdmin
+    </div>
+
+    <div th:if="${session.imadmin}" style="background: cornflowerblue; width: 300px; height: 100px">
+        如果是管理者,就可以看到這個區塊 ->session.imadmin
+    </div>
+
+    <div th:if="${ 3 lt 5}" style="background: indianred; width: 300px; height: 100px" >
+        當條件為true(3 < 5),就可以看到這個區塊
+    </div>
+
+    <div th:if="${5 gt 3}" style="background: aquamarine; width: 300px; height: 100px">
+        當條件為true,才能看到這區塊;否則看不在 (在這個條件是看不到,因為3 > 5 = false)
+    </div>
+
+
+    <hr>
+    <h2> IF-ELSE 判斷式練習</h2>
+    <div th:if="${ isAdmin }" style="background: burlywood; width: 300px; height: 100px">
+        如果是管理者,就可以看到這個區塊 ->model isAdmin ->model.addAttribute("isAdmin",true); 【true】
+    </div>
+    <div th:unless="${ isAdmin }" style="background: aqua; width: 300px; height: 100px">
+        因為你不是管理者,就可以看到這個區塊 ->model isAdmin ->model.addAttribute("isAdmin",false); 改為【false】
+    </div>
+
+    <hr>
+    <h1>比對字串方式:使用 Thymeleaf 的公用式</h1>
+    <div th:if="${#strings.equals(param.msg, 'Admin')}">
+        如果傳入的字串 admin , 你會看到這一段(一定要 大小寫(Admin) 相符)
+        -->http://localhost:8080/if?msg=Admin
+    </div>
+    <div th:if="${#strings.equalsIgnoreCase(param.msg, 'AdMiN')}">
+        如果傳入的字串是 admin, 你會看到這一區塊(不會大小寫)
+    </div>
+    <hr>
+</body>
+</html>

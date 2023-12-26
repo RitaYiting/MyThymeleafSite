@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p thh:text="${#session.getAttribute("msg")}">這邊會由Spring Boot 宣告的變數內容替換掉</p> <!--這行是舊版寫法了,會出錯-->
+<!--當語法出錯時,原本的文字內容還是可以顯示, th:text...多打一個h-->
+
+<!--    跟Controller要資料 利用session-->
+    session:<p th:text="${session.msg}">這邊會由Spring Boot 宣告的變數內容替換掉</p>
+
+<!--    用th:text這樣的寫法是,當避免出錯時,使用者可能會看到一堆亂碼-->
+    <hr>
+<!--    Thymeleaf會自動找request、Model-->
+    <!--request來的-->
+    request:<p th:text="${msg}">這邊會由Spring Boot 宣告的變數內容替換掉</p>
+    <hr>
+    <!--Model來的-->
+    Model:<p th:text="${msg2}">這邊會由Spring Boot 宣告的變數內容替換掉</p>
+    <hr>
+    <!--Param-->
+    param:<p th:text="${param.msg}">這是看傳了什麼參數</p>
+    說明:在http://localhost:8080/data的後面..加上 ?msg=123
+    <hr>
+    <!--Var-->
+    vars:<p th:text="${#vars.msg2}">這邊會由Spring Boot 宣告的變數內容替換掉</p>
+    <p style="color: red">session.request.vars的東西,都是 放在 #Vars這個容器.</p>
+    <hr>
+    <p th:text="靜態取代文字">這邊會由Spring Boot 宣告的變數內容替換掉</p>
+    <hr>
+
+    <h2>運算式練習</h2>
+    3+5= <span th:text="${3+5}">0</span> <br>
+    3-5= <span th:text="${3-5}">0</span> <br>
+    3*5= <span th:text="${3*5}">0</span> <br>
+    3/5= <span th:text="${3/5}">0</span> <br>
+    3%5= <span th:text="${3%5}">0</span> <br>
+
+<!--    &gt 代表 >; &lt 代表 <; &gt= 代表 >=; &lt= 代表 <=-->
+    3 &gt 5= <span th:text="${3>5}">0</span> <br>
+    3 &lt 5= <span th:text="${3<5}">0</span> <br>
+    3 &gt= 5= <span th:text="${3 ge 5}">0</span> <br>
+    3 &lt= 5= <span th:text="${3 le 5}">0</span> <br>
+    3 == 5= <span th:text="${3 eq 5}">0</span> <br>
+    3 != 5= <span th:text="${3 ne 5}">0</span> <br>
+
+
+</body>
+</html>
