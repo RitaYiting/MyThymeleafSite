@@ -6,8 +6,10 @@
 </head>
 <body>
     <h1>產名名稱顯示如下:</h1>
-    <p th:each="f: ${fname}" th:text="${f}"></p>
-    說明: 從${fname}來做迴圈,從中一個一個把值抓出來放給【f】,再把值丟給${f}
+    <div style="background: aquamarine; width: 200px; height: 200px">
+        <p th:each="f : ${fname}" th:text="${f}"></p>
+    </div>
+    說明: 從${fname} 來做迴圈,從中一個一個把值抓出來放給 f,再把值丟給 ${f}
     這是用forEach來做
 </body>
 </html>
